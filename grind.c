@@ -70,9 +70,10 @@ static bool print_and_free_list(struct grind_elem* head) {
         return false;
     }
     while (itr != NULL) {
+        struct grind_elem* next = itr->next;
         printf("Uh Oh! %ld Bytes Leaked From Line: %d\n", itr->size, itr->index);
         free_grind_elem(&itr);
-        itr = itr->next;
+        itr = next;
     }
     return true;
 }
